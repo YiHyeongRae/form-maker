@@ -5,6 +5,7 @@ import { useState } from "react";
 import { map } from "lodash";
 import TimePicker from "./component/TimePicker";
 import useDateTimes from "./util/useDateTimes";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   const [isAgree, setIsAgree] = useState(false);
@@ -582,6 +583,7 @@ function App() {
           style={{ backgroundColor: "rgba(0,0,0,0.3)" }}
         ></div>
       )}
+      <Analytics />
     </main>
   );
 }
