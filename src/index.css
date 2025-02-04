@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: GmarketSansLight;
+  font-weight: 400;
+  src: local("GmarketSansLight"),
+    url("./assets/fonts/GmarketSansLight.otf") format("opentype");
+}
+
+@font-face {
+  font-family: GmarketSansMedium;
+  font-weight: 500;
+  src: local("GmarketSan"),
+    url("./assets/fonts/GmarketSansMedium.otf") format("opentype");
+}
+
+@font-face {
+  font-family: GmarketSansBold;
+  font-weight: 700;
+  src: local("GmarketSansBold"),
+    url("./assets/fonts/GmarketSansBold.otf") format("opentype");
+}

@@ -1,0 +1,12 @@
+* {
+  font-family: "GmarketSansMedium" !important;
+}
+
+input::placeholder {
+  color: #aeaeae;
+}
+
+.input:focus,
+.input:focus-within {
+  outline-color: var(--fallback-s, oklch(var(--s) / var(--tw-bg-opacity, 1)));
+}
