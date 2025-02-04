@@ -549,7 +549,7 @@ function App() {
             onClick={() => {
               window.navigator.clipboard
                 .writeText(
-                  `🩷🩷🩷🩷🩷🩷🩷🩷🩷🩷🩷🩷\n\n<사랑방 제작케이크 주문서>\n0. 모든메뉴글 및 주의사항 동의 : o\n1. 성함 : ${
+                  `🩷🩷🩷🩷🩷🩷🩷🩷🩷🩷🩷\n\n<사랑방 제작케이크 주문서>\n0. 모든메뉴글 및 주의사항 동의 : o\n1. 성함 : ${
                     order.name
                   }\n2. 연락처 : ${order.phone}\n3. 픽업희망일 : ${
                     useDateTimes(order.pickupDate).month
@@ -565,7 +565,7 @@ function App() {
                     order.cakeTopping
                   }\n8. 디자인 설명 : ${order.detail}\n9. 알게된 경로 : ${
                     order.way
-                  }\n10. 보냉백은 필요시 매장구매\n\n🩷🩷🩷🩷🩷🩷🩷🩷🩷🩷🩷🩷`
+                  }\n10. 보냉백은 필요시 매장구매\n\n🩷🩷🩷🩷🩷🩷🩷🩷🩷🩷🩷`
                 )
                 .then(() => {
                   alert("주문서가 복사되었습니다.");
