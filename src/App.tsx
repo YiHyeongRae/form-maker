@@ -530,6 +530,11 @@ function App() {
           />
         </label>
 
+        <div className="mt-2 text-xs text-center">
+          사진첨부는 복사한 주문서와 함께
+          <br /> 채널 대화방에서 전송해주세요 :D
+        </div>
+
         <div className="flex w-full mt-2">
           <button
             type="button"
