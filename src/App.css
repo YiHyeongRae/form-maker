@@ -10,3 +10,6 @@ input::placeholder {
 .input:focus-within {
   outline-color: var(--fallback-s, oklch(var(--s) / var(--tw-bg-opacity, 1)));
 }
+textarea::placeholder {
+  color: #aeaeae !important;
+}
