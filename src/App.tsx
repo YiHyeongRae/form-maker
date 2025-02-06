@@ -260,7 +260,7 @@ function App() {
               className="w-full font-normal justify-start pl-0 ml-0 btn text-xs btn-ghost hover:!bg-transparent"
               style={{
                 color: order.cakeSize === "" ? "#aeaeae" : "inherit",
-                opacity: !isAgree ? "0.4" : "1",
+                opacity: !isAgree ? "0.9" : "1",
               }}
             >
               {order.cakeSize === "" ? "클릭해서 고르기" : order.cakeSize}
@@ -317,7 +317,7 @@ function App() {
               className="w-full font-normal justify-start pl-0 ml-0 btn text-xs btn-ghost hover:!bg-transparent"
               style={{
                 color: order.cakeSheet === "" ? "#aeaeae" : "inherit",
-                opacity: !isAgree ? "0.4" : "1",
+                opacity: !isAgree ? "0.9" : "1",
               }}
             >
               {order.cakeSheet === "" ? "클릭해서 고르기" : order.cakeSheet}
@@ -375,7 +375,7 @@ function App() {
               className="w-full font-normal justify-start pl-0 ml-0 btn text-xs btn-ghost hover:!bg-transparent"
               style={{
                 color: order.cakeInnerCream === "" ? "#aeaeae" : "inherit",
-                opacity: !isAgree ? "0.4" : "1",
+                opacity: !isAgree ? "0.9" : "1",
               }}
             >
               {order.cakeInnerCream === ""
@@ -449,7 +449,7 @@ function App() {
               className="w-full font-normal justify-start pl-0 ml-0 btn text-xs btn-ghost hover:!bg-transparent"
               style={{
                 color: order.cakeTopping === "" ? "#aeaeae" : "inherit",
-                opacity: !isAgree ? "0.4" : "1",
+                opacity: !isAgree ? "0.9" : "1",
               }}
             >
               {order.cakeTopping === "" ? "클릭해서 고르기" : order.cakeTopping}
@@ -497,10 +497,11 @@ function App() {
               디자인 설명 (자세히, 레터링이시면 레터링 문구)
             </span>
           </div>
+
           <textarea
             disabled={!isAgree}
-            className="h-32 p-4 mt-2 text-xs resize-none textarea textarea-bordered"
-            placeholder="자세히 설명해주세요 !"
+            className="h-32 p-4 mt-2 text-xs resize-none textarea textarea-bordered focus:outline-secondary "
+            placeholder="자세히 설명해주세요"
             value={order.detail || ""}
             onChange={(e) => {
               setOrder((prev) => {
@@ -520,7 +521,7 @@ function App() {
             disabled={!isAgree}
             type="text"
             className="grow"
-            placeholder="인스타,네이버,자안소개,매장방문 "
+            placeholder="인스타,네이버,소개,방문 ···"
             value={order.way || ""}
             onChange={(e) =>
               setOrder((prev) => {
@@ -532,7 +533,11 @@ function App() {
 
         <div className="mt-2 text-xs text-center">
           사진첨부는 복사한 주문서와 함께
-          <br /> 채널 대화방에서 전송해주세요 :D
+          <br />
+          <span className="underline underline-offset-4 text-error">
+            채널 대화방
+          </span>
+          &nbsp;에서 전송해주세요!
         </div>
 
         <div className="flex w-full mt-2">
