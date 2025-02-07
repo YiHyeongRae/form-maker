@@ -56,7 +56,7 @@ function App() {
   ];
 
   return (
-    <main className="px-1 m-4 overflow-hidden touch-pan-y">
+    <main className="px-5 my-4 overflow-hidden touch-pan-y max-w-[720px] mx-auto">
       <div className="flex items-center justify-center">
         <div className="w-64">
           <img className="w-full" src={MainLogo} />
