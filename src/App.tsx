@@ -32,6 +32,8 @@ function App() {
   const [timepicker, setTimepicker] = useState(false);
 
   const sizeArr = [
+    "한입케이크 (500원크기) 1개",
+    "한입케이크 (500원크기) 2개",
     "도시락 (지름 9cm)",
     "미니 (지름11cm)",
     "1호 (지름15cm)",
