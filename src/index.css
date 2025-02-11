@@ -3,22 +3,23 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: GmarketSansLight;
-  font-weight: 400;
-  src: local("GmarketSansLight"),
-    url("./assets/fonts/GmarketSansLight.otf") format("opentype");
+  font-family: "GmarketSansLight";
+  src: url("https://cdn.jsdelivr.net/gh/fontbee/font@main/Gmarket/GmarketSansLight.woff")
+    format("woff");
+  font-weight: 300;
+  font-style: normal;
 }
-
 @font-face {
-  font-family: GmarketSansMedium;
+  font-family: "GmarketSansMedium";
+  src: url("https://cdn.jsdelivr.net/gh/fontbee/font@main/Gmarket/GmarketSansMedium.woff")
+    format("woff");
   font-weight: 500;
-  src: local("GmarketSan"),
-    url("./assets/fonts/GmarketSansMedium.otf") format("opentype");
+  font-style: normal;
 }
-
 @font-face {
-  font-family: GmarketSansBold;
+  font-family: "GmarketSansBold";
+  src: url("https://cdn.jsdelivr.net/gh/fontbee/font@main/Gmarket/GmarketSansBold.woff")
+    format("woff");
   font-weight: 700;
-  src: local("GmarketSansBold"),
-    url("./assets/fonts/GmarketSansBold.otf") format("opentype");
+  font-style: normal;
 }
