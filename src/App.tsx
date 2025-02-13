@@ -67,7 +67,7 @@ function App() {
         </div>
 
         <div className="flex flex-col gap-4">
-          <div className="text-xs text-center">
+          <div className="text-xs text-center break-keep">
             카카오톡 채널에서 <br />
             모든메뉴글 및 주의사항을 꼭 읽어주세요!
             <br />
@@ -182,6 +182,14 @@ function App() {
             </div>
           </div>
 
+          <div className="text-xs text-center">
+            픽업 시간 늦어질 경우
+            <br />
+            <span className="underline underline-offset-4 text-error">
+              미리 연락
+            </span>
+            &nbsp;부탁드려요!
+          </div>
           <label className="flex items-center text-xs input input-bordered">
             <span className="min-w-20">픽업시간</span>
             <input
