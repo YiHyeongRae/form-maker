@@ -514,7 +514,9 @@ function App() {
             <textarea
               disabled={!isAgree}
               className="h-32 p-4 mt-2 text-xs resize-none textarea textarea-bordered focus:outline-secondary "
-              placeholder="자세히 설명해주세요"
+              placeholder={`자세히 설명해주세요!\n
+타업체 디자인, 타업체 글씨체, 컬러등 동일하게 나오지 않습니다.\n
+최대한 참고해서 사랑방 스타일로 제작되어요!`}
               value={order.detail || ""}
               onChange={(e) => {
                 setOrder((prev) => {
