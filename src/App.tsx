@@ -38,15 +38,18 @@ function App() {
     "미니 (지름11cm)",
     "1호 (지름15cm)",
     "2호 (지름18cm)",
-    "1호 2단 (1호 + 초미니)",
+    "1호 2단 (1호 + 도시락)",
     "2호 2단 (2호 + 미니)",
   ];
-  const sheetArr = ["바닐라", "초코"];
+  const sheetArr = [
+    { sheet: "바닐라", price: 0 },
+    { sheet: "초코", price: 1000 },
+  ];
 
   const creamArr = [
     { cream: "우유생크림", price: 0 },
     { cream: "오레오크림", price: 1500 },
-    { cream: "초코크림", price: 1500 },
+    { cream: "초코크림", price: 3000 },
     { cream: "블루베리크림", price: 2000 },
     { cream: "라즈베리크림", price: 2000 },
   ];
@@ -333,7 +336,7 @@ function App() {
               >
                 {order.cakeSheet === "" ? "클릭해서 고르기" : order.cakeSheet}
               </summary>
-              <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+              {/* <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
                 {map(sheetArr, (item, index) => {
                   return (
                     <li key={item + index}>
@@ -349,6 +352,45 @@ function App() {
                         className="text-xs active:!bg-secondary"
                       >
                         {item}
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul> */}
+              {/* 
+도시락/미니 초코시트 1000
+1호 초코시트 2000
+2호 초코시트 3000
+*/}
+              <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] p-2 shadow">
+                {map(sheetArr, (item, index) => {
+                  return (
+                    <li key={item.sheet + index}>
+                      <a
+                        onClick={() => {
+                          document
+                            .getElementById("sheet")
+                            ?.removeAttribute("open");
+                          setOrder((prev) => {
+                            return {
+                              ...prev,
+                              cakeSheet: `${item.sheet}(+${item.price} ~)`,
+                            };
+                          });
+                        }}
+                        className="text-xs active:!bg-secondary"
+                      >
+                        {item.sheet}
+                        {item.price !== 0 && (
+                          <span className="text-xs text-error">
+                            ( +
+                            {String(item.price).replace(
+                              /\B(?=(\d{3})+(?!\d))/g,
+                              ","
+                            )}
+                            {" ~"})
+                          </span>
+                        )}
                       </a>
                     </li>
                   );
@@ -405,7 +447,7 @@ function App() {
                           setOrder((prev) => {
                             return {
                               ...prev,
-                              cakeInnerCream: `${item.cream}(+${item.price})`,
+                              cakeInnerCream: `${item.cream}(+${item.price} ~)`,
                             };
                           });
                         }}
@@ -418,8 +460,8 @@ function App() {
                             {String(item.price).replace(
                               /\B(?=(\d{3})+(?!\d))/g,
                               ","
-                            )}{" "}
-                            )
+                            )}
+                            {" ~"})
                           </span>
                         )}
                       </a>
@@ -479,7 +521,7 @@ function App() {
                           setOrder((prev) => {
                             return {
                               ...prev,
-                              cakeTopping: `${item.topping}(+${item.price})`,
+                              cakeTopping: `${item.topping}(+${item.price} ~)`,
                             };
                           });
                         }}
@@ -492,8 +534,8 @@ function App() {
                             {String(item.price).replace(
                               /\B(?=(\d{3})+(?!\d))/g,
                               ","
-                            )}{" "}
-                            )
+                            )}
+                            {" ~"})
                           </span>
                         )}
                       </a>
@@ -505,18 +547,33 @@ function App() {
           </label>
 
           <label className=" form-control">
-            <div className=" label">
-              <span className="text-xs label-text">
-                디자인 설명 (자세히, 레터링이시면 레터링 문구)
+            <div className="mb-2 text-xs text-center break-keep">
+              타업체 디자인, 타업체 글씨체, 컬러등 동일하게 나오지 않습니다.
+              <br />
+              최대한 참고해서&nbsp;
+              <span className="underline underline-offset-4 text-error">
+                사랑방 스타일
               </span>
+              &nbsp;로 제작되어요!
             </div>
-
+            {/* 
+            <label className="justify-center gap-2 cursor-pointer label">
+              <span className="text-xs label-text text-error">확인</span>
+              <input
+                type="checkbox"
+                checked={isAgree}
+                className="checkbox [--chkbg:oklch(var(--er))] [--chkfg:oklch(var(--b1))]"
+                // onChange={() => setIsAgree((prev) => !prev)}
+              />
+            </label> */}
+            {/* <div className=" label">
+              <span className="text-xs label-text">디자인 설명</span>
+            </div> */}
             <textarea
               disabled={!isAgree}
               className="h-32 p-4 mt-2 text-xs resize-none textarea textarea-bordered focus:outline-secondary "
-              placeholder={`자세히 설명해주세요!\n
-타업체 디자인, 타업체 글씨체, 컬러등 동일하게 나오지 않습니다.\n
-최대한 참고해서 사랑방 스타일로 제작되어요!`}
+              placeholder={`디자인 설명 자세히 부탁드려요!\n
+레터링이시면 레터링 문구!\n`}
               value={order.detail || ""}
               onChange={(e) => {
                 setOrder((prev) => {
