@@ -102,7 +102,7 @@ function index({
 
   return (
     <>
-      <div className="relative flex-auto max-w-md p-4 bg-white border rounded-md min-w-64">
+      <div className="relative flex-auto p-4 bg-white border rounded-md min-w-64">
         <div className="flex items-center justify-center gap-4 mb-4 text-xs">
           <button
             className="btn btn-xs btn-ghost btn-primary"

@@ -59,6 +59,7 @@ function App() {
     { topping: "초콜릿칩", price: 1500 },
     { topping: "오레오쿠키", price: 1500 },
   ];
+  console.log(order);
 
   return (
     <div className="bg-[#fafafa]">
@@ -170,7 +171,7 @@ function App() {
               transition: "all .2s linear",
             }}
           >
-            <div className="p-4  w-full absolute top-[50%] left-[50%]  translate-x-[-50%] translate-y-[-50%]">
+            <div className="p-4 w-full absolute top-[50%] left-[50%]  translate-x-[-50%] translate-y-[-50%]">
               <Calendar
                 select={{
                   selected: order.pickupDate,
@@ -288,9 +289,20 @@ function App() {
                           document
                             .getElementById("size")
                             ?.removeAttribute("open");
-                          setOrder((prev) => {
-                            return { ...prev, cakeSize: item };
-                          });
+
+                          if (item.includes("한입")) {
+                            setOrder((prev) => {
+                              return {
+                                ...prev,
+                                cakeSize: item,
+                                cakeInnerCream: "",
+                              };
+                            });
+                          } else {
+                            setOrder((prev) => {
+                              return { ...prev, cakeSize: item };
+                            });
+                          }
                         }}
                         className="text-xs active:!bg-secondary"
                       >
@@ -438,7 +450,21 @@ function App() {
               <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] p-2 shadow">
                 {map(creamArr, (item, index) => {
                   return (
-                    <li key={item.cream + index}>
+                    <li
+                      key={item.cream + index}
+                      style={{
+                        pointerEvents:
+                          order.cakeSize.includes("한입") &&
+                          item.cream !== "우유생크림"
+                            ? "none"
+                            : "initial",
+                        color:
+                          order.cakeSize.includes("한입") &&
+                          item.cream !== "우유생크림"
+                            ? "#eaeaea"
+                            : "initial",
+                      }}
+                    >
                       <a
                         onClick={() => {
                           document
@@ -455,7 +481,16 @@ function App() {
                       >
                         {item.cream}
                         {item.price !== 0 && (
-                          <span className="text-xs text-error">
+                          <span
+                            className="text-xs text-error"
+                            style={{
+                              color:
+                                order.cakeSize.includes("한입") &&
+                                item.cream !== "우유생크림"
+                                  ? "#eaeaea"
+                                  : "initial",
+                            }}
+                          >
                             ( +
                             {String(item.price).replace(
                               /\B(?=(\d{3})+(?!\d))/g,
