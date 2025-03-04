@@ -296,6 +296,7 @@ function App() {
                                 ...prev,
                                 cakeSize: item,
                                 cakeInnerCream: "",
+                                cakeTopping: "",
                               };
                             });
                           } else {
@@ -547,7 +548,21 @@ function App() {
               <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
                 {map(toppingArr, (item, index) => {
                   return (
-                    <li key={item.topping + index}>
+                    <li
+                      key={item.topping + index}
+                      style={{
+                        pointerEvents:
+                          order.cakeSize.includes("한입") &&
+                          !item.topping.includes("없음")
+                            ? "none"
+                            : "initial",
+                        color:
+                          order.cakeSize.includes("한입") &&
+                          !item.topping.includes("없음")
+                            ? "#eaeaea"
+                            : "initial",
+                      }}
+                    >
                       <a
                         onClick={() => {
                           document
