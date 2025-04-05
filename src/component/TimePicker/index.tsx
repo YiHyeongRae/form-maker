@@ -44,7 +44,6 @@ function index({
   const regexResult = heightRegex.exec(fixedHeight);
   const pickerHeight = regexResult !== null && regexResult[1].replace("px", "");
 
-  console.log(timeState);
   return (
     <div className="bg-white border rounded-md">
       <div className="p-2 text-xs text-center border-b bg-zinc-100">
@@ -59,21 +58,21 @@ function index({
             >
               {/* hours */}
               {times(
-                type === "half" ? 11 + (perItems - 1) : 23 + (perItems - 1),
+                type === "half" ? 13 + (perItems - 1) : 23 + (perItems - 1),
                 (item: number) => {
                   return (
                     <span
                       className={`block text-center cursor-pointer ${
-                        Number(item + 1) ===
+                        Number(item) ===
                           (timeState.hour !== "" && Number(timeState.hour)) &&
                         "bg-secondary text-white"
                       }`}
-                      key={`hour-${item + 1}`}
+                      key={`hour-${item}`}
                       style={{
                         minHeight: Number(pickerHeight) / perItems,
                         lineHeight: `${Number(pickerHeight) / perItems}px`,
                         visibility:
-                          item + 1 > (type === "half" ? 11 : 23)
+                          item > (type === "half" ? 12 : 23)
                             ? "hidden"
                             : "visible",
                       }}
@@ -83,17 +82,18 @@ function index({
                         if (
                           parentEl &&
                           parentEl?.scrollTop !==
-                            (item + 1) * (Number(pickerHeight) / perItems)
+                            item * (Number(pickerHeight) / perItems)
                         ) {
                           parentEl.scrollTo({
                             top: item * (Number(pickerHeight) / perItems),
                             behavior: "smooth",
                           });
                         }
-
-                        const hourItem = String(
-                          item + 1 < 10 ? `0${item + 1}` : item + 1
+                        console.log(
+                          "???",
+                          item * (Number(pickerHeight) / perItems)
                         );
+                        const hourItem = String(item < 10 ? `0${item}` : item);
 
                         setTimeState((prev) => {
                           return {
@@ -111,7 +111,7 @@ function index({
                         );
                       }}
                     >
-                      {item + 1 < 10 ? `0${item + 1}` : item + 1}
+                      {item < 10 ? `0${item}` : item}
                     </span>
                   );
                 }
