@@ -51,7 +51,7 @@ function App() {
     { cream: "오레오크림", price: 1500 },
     { cream: "초코크림", price: 3000 },
     { cream: "블루베리크림", price: 2000 },
-    { cream: "라즈베리크림", price: 2000 },
+    { cream: "라즈베리크림", price: 2000, status: "SOLD_OUT" },
   ];
 
   const toppingArr = [
@@ -455,7 +455,8 @@ function App() {
                       key={item.cream + index}
                       style={{
                         pointerEvents:
-                          order.cakeSize.includes("한입") &&
+                          (item.status === "SOLD_OUT" ||
+                            order.cakeSize.includes("한입")) &&
                           item.cream !== "우유생크림"
                             ? "none"
                             : "initial",
@@ -464,6 +465,10 @@ function App() {
                           item.cream !== "우유생크림"
                             ? "#eaeaea"
                             : "initial",
+
+                        textDecoration:
+                          item.status === "SOLD_OUT" ? "line-through" : "",
+                        textDecorationColor: "#ff5861",
                       }}
                     >
                       <a
