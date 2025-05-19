@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import "./App.css";
 import MainLogo from "../public/logo.png";
 import Calendar from "./component/Calendar";
@@ -56,10 +57,9 @@ function App() {
 
   const toppingArr = [
     { topping: "없음", price: 0 },
-    { topping: "초콜릿칩", price: 1500 },
+    // { topping: "초콜릿칩", price: 1500 },
     { topping: "오레오쿠키", price: 1500 },
   ];
-  console.log(order);
 
   return (
     <div className="bg-[#fafafa]">
