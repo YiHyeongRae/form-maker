@@ -181,18 +181,19 @@ function App() {
                     }),
                 }}
                 past={today}
+                future="2025-05-27"
                 closeFunc={() => setCalendar(false)}
               />
             </div>
           </div>
 
           <div className="text-xs text-center">
-            픽업 시간 늦어질 경우
+            선택이 불가한 날짜는
             <br />
             <span className="underline underline-offset-4 text-error">
-              미리 연락
+              예약 마감
             </span>
-            &nbsp;부탁드려요!
+            &nbsp;되었습니다!
           </div>
           <label className="flex items-center text-xs input input-bordered">
             <span className="min-w-20">픽업시간</span>
