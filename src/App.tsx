@@ -22,12 +22,12 @@ function App() {
     way: "",
     detail: "",
   });
-  const date = new Date();
-  const year = date.getFullYear();
-  const monthStr =
-    date.getMonth() + 1 < 11 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
-  const dateStr = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
-  const today = `${year}-${monthStr}-${dateStr}`;
+  // const date = new Date();
+  // const year = date.getFullYear();
+  // const monthStr =
+  //   date.getMonth() + 1 < 11 ? `0${date.getMonth() + 1}` : date.getMonth() + 1;
+  // const dateStr = date.getDate() < 10 ? `0${date.getDate()}` : date.getDate();
+  // const today = `${year}-${monthStr}-${dateStr}`;
 
   const [calender, setCalendar] = useState(false);
   const [timepicker, setTimepicker] = useState(false);
@@ -180,7 +180,7 @@ function App() {
                       return { ...prev, pickupDate: date };
                     }),
                 }}
-                past={today}
+                past={"2025-05-27"}
                 future="2025-05-27"
                 closeFunc={() => setCalendar(false)}
               />
